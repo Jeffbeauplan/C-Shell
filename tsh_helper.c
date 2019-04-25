@@ -12,6 +12,8 @@ bool check_block = true;        // If true, check that signals are blocked
 int nextjid = 1;                // Next job ID to allocate
 char sbuf[MAXLINE_TSH];         // For composing sprintf messages
 
+
+
 // Parsing states, used for parseline
 typedef enum parse_state
 {

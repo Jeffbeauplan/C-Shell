@@ -15,11 +15,19 @@
 #include <assert.h>
 #include "csapp.h"
 #include <stdbool.h>
+#include <stdio.h>
 
 #define MAXLINE_TSH     1024    // max line size
 #define MAXARGS         128     // max args on a command line
 #define MAXJOBS         16      // max jobs at any point in time
 #define MAXJID          1<<16   // max job ID
+
+typedef struct node {
+   char cmdline[MAXLINE_TSH];
+	
+   struct node *next;
+   struct node *prev;
+} node;
 
 /* 
  * Job states: FG (foreground), BG (background), ST (stopped),
@@ -163,43 +171,43 @@ void usage(void);
 /*
  * blocks SIGCHLD, SIGINT, SIGTSTP signals
  */
-void blockSig();
+//void blockSig();
 
 /*
  * unblocks SIGCHLD, SIGINT, SIGTSTP signals
  */
-void unblockSig();
+//void unblockSig();
 
 /*
  * uses the pid or %jid from the second argument in the 
  * command line arguments to retreive a job
  */
-struct job_t* getjob(const struct cmdline_tokens *token);
+//struct job_t* getjob(const struct cmdline_tokens *token);
 
 /*
  * receives a pid and a return status and updates the job status 
  * and job list based on the status of the process
  */
-int updateJobStatus(pid_t pid, int status);
+//int updateJobStatus(pid_t pid, int status);
 
 /*
  * restarts a job in the background.  
  */ 
-void bgcommand(const struct cmdline_tokens *token);
+//void bgcommand(const struct cmdline_tokens *token);
 
 /*
  * restarts a job in the foreground
  */ 
-void fgcommand(const struct cmdline_tokens *token);
+//void fgcommand(const struct cmdline_tokens *token);
 
 /*
  * Starts a job in the background
  */
-void addbgjob(const struct cmdline_tokens *token, const char *cmdline);
+//void addbgjob(const struct cmdline_tokens *token, const char *cmdline);
 
 /*
  * Starts a job in the foreground
  */
-void addfgjob(const struct cmdline_tokens *token, const char *cmdline);
+//void addfgjob(const struct cmdline_tokens *token, const char *cmdline);
 
 #endif
